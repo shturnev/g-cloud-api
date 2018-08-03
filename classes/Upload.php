@@ -4,10 +4,11 @@
  * User: sht-home
  * Date: 03.08.2018
  * Time: 19:37
+ * api для https://console.cloud.google.com/storage/
  */
 
 namespace classes;
-use Google\Cloud\Storage\StorageClient;
+use Google\Cloud\Storage\StorageClient; //https://packagist.org/packages/google/cloud-storage
 
 class Upload
 {
@@ -16,8 +17,6 @@ class Upload
 
     public function __construct()
     {
-
-
         $this->storage = new StorageClient([
             'keyFile' => json_decode(file_get_contents('./cloud_keys.json'), true)
         ]);
@@ -33,10 +32,13 @@ class Upload
         $bucket = $this->storage->bucket($array['bucket']);
         $object = $bucket->upload(
             fopen($array['file'], 'r'),
-            ['name' => $array['filename']
-        ]);
+            [
+                'name' => $array['filename'],
+                'predefinedAcl' => 'publicRead'
+            ]
+        );
 
-        return ['filename' => $array['filename']];
+        return $object->info();
     }
 
     /**
