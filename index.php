@@ -33,31 +33,26 @@ if($_COOKIE['token'] != $auth['token'])
   <!--Methods-->
   <ul class="accordion" data-accordion data-allow-all-closed="true">
     <li data-accordion-item>
-      <a href="#" class="accordion-title">Авторизация</a>
-
+      <a href="#" class="accordion-title">Upload</a>
       <div class="accordion-content" data-tab-content >
-        <!--Авторизация-->
         <div class="grid-x grid-padding-x">
           <div class="cell large-4">
-            <h4>Авторизация</h4>
+            <h4>upload</h4>
             <div class="callout secondary">
               <ul>
-                <li>method_name: auth</li>
-                <li>login: (string)</li>
-                <li>pass: (string)</li>
+                <li>method_name: upload</li>
+                <li>file: (file)</li>
+                <li>filename: (string)</li>
+                <li>bucket: (string - название сегмента в storage)</li>
               </ul>
-
             </div>
           </div>
           <div class="cell large-8">
             <form action="api.php" method="post" enctype="multipart/form-data" name="myForm" target="_self">
-              <input type="hidden" name="method_name" value="auth">
+              <input type="hidden" name="method_name" value="upload">
 
-              <label>login</label>
-              <input type="text" name="login" value="stur2@forinfinite.com" />
-              <label>pass</label>
-              <input type="text" name="pass" value="stur2@forinfinite.com"/>
-
+              <label>file</label>
+              <input type="file" name="file" />
               <input name="submit" type="submit" class="button" value="Done"/>
             </form>
           </div>
@@ -65,151 +60,34 @@ if($_COOKIE['token'] != $auth['token'])
       </div>
     </li>
     <li data-accordion-item>
-      <a href="#" class="accordion-title">Get All Custom Reports</a>
-
+      <a href="#" class="accordion-title">Get file</a>
       <div class="accordion-content" data-tab-content >
-        <!--Get All Custom Reports-->
         <div class="grid-x grid-padding-x">
           <div class="cell large-4">
-            <h4>Get All Custom Reports</h4>
+            <h4>Get file</h4>
             <div class="callout secondary">
               <ul>
-                <li>method_name: get_all_custom_reports</li>
-                <li>token: (string)</li>
+                <li>method_name: getFile</li>
+                <li>filename: (string)</li>
+                <li>bucket: (string - название сегмента в storage)</li>
               </ul>
             </div>
           </div>
           <div class="cell large-8">
             <form action="api.php" method="post" enctype="multipart/form-data" name="myForm" target="_self">
-              <input type="hidden" name="method_name" value="get_all_custom_reports">
+              <input type="hidden" name="method_name" value="getFile">
 
-              <label>token</label>
-              <input type="text" name="token" value="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyaWQiOiI1YTRlMGEyMWFhZTQ0NzAwMDIzNjYzZDIifQ.KXM3EkBuHeZNJI-xe3q4ahp5Cz4d3vSzyI5uPgqtuvM" />
+              <label>filename</label>
+              <input type="text" name="filename" />
 
-              <input name="submit" type="submit" class="button " value="Done"/>
+              <label>bucket (название сегмента в storage)</label>
+              <input type="text" name="bucket" />
+              <input name="submit" type="submit" class="button" value="Done"/>
             </form>
           </div>
-
-
         </div>
       </div>
-    </li>
-    <li data-accordion-item>
-      <a href="#" class="accordion-title">Generate custom report</a>
 
-      <div class="accordion-content" data-tab-content >
-        <!--Get All Custom Reports-->
-        <div class="grid-x grid-padding-x">
-          <div class="cell large-4">
-            <h4>Generate custom report</h4>
-            <div class="callout secondary">
-              <ul>
-                <li>method_name: generate_custom_report</li>
-                <li>token: (string)</li>
-                <li>id: (string)</li>
-              </ul>
-            </div>
-          </div>
-          <div class="cell large-8">
-            <form action="api.php" method="post" enctype="multipart/form-data" name="myForm" target="_self">
-              <input type="hidden" name="method_name" value="generate_custom_report">
-
-              <label>token</label>
-              <input type="text" name="token" value="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyaWQiOiI1YTRlMGEyMWFhZTQ0NzAwMDIzNjYzZDIifQ.KXM3EkBuHeZNJI-xe3q4ahp5Cz4d3vSzyI5uPgqtuvM" />
-              <label>id</label>
-              <input type="text" name="id" value="5a61d6a2ec412d00025c98c4" />
-
-              <input name="submit" type="submit" class="button " value="Done"/>
-            </form>
-          </div>
-
-
-        </div>
-      </div>
-    </li>
-    <li data-accordion-item>
-      <a href="#" class="accordion-title">Export custom report</a>
-
-      <div class="accordion-content" data-tab-content >
-        <!--Get All Custom Reports-->
-        <div class="grid-x grid-padding-x">
-          <div class="cell large-4">
-            <h4>Export custom report</h4>
-            <div class="callout secondary">
-              <ul>
-                <li>method_name: export_custom_report</li>
-                <li>token: (string)</li>
-                <li>id: (string)</li>
-                <li>insert: (bool) (нужно ли записать данные в БД?)</li>
-              </ul>
-            </div>
-          </div>
-          <div class="cell large-8">
-            <form action="api.php" method="post" enctype="multipart/form-data" name="myForm" target="_self">
-              <input type="hidden" name="method_name" value="export_custom_report">
-
-              <label>token</label>
-              <input type="text" name="token" value="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyaWQiOiI1YTRlMGEyMWFhZTQ0NzAwMDIzNjYzZDIifQ.KXM3EkBuHeZNJI-xe3q4ahp5Cz4d3vSzyI5uPgqtuvM" />
-              <label>id</label>
-              <input type="text" name="id" value="5a61d6a2ec412d00025c98c4" />
-              <label>
-                <input type="checkbox" name="insert" />
-                insert
-              </label>
-
-              <input name="submit" type="submit" class="button " value="Done"/>
-            </form>
-          </div>
-
-
-        </div>
-      </div>
-    </li>
-    <li data-accordion-item>
-      <a href="#" class="accordion-title">Get all filtered data of report_id from db</a>
-
-      <div class="accordion-content" data-tab-content >
-        <!--Get All Custom Reports-->
-        <div class="grid-x grid-padding-x">
-          <div class="cell large-4">
-            <h4>Get all -filtered</h4>
-            <div class="callout secondary">
-              <ul>
-                <li>method_name: get_filtered_from_db_all</li>
-
-                <li>report_id : (string)</li>
-                <li>limit : (int)</li>
-                <li>unique : (string) </li>
-                <li>order_by : (string) </li>
-                <li>date_from : (int unix_date)</li>
-                <li>date_to : (int unix_date)</li>
-              </ul>
-            </div>
-          </div>
-          <div class="cell large-8">
-            <form action="api.php" method="post" enctype="multipart/form-data" name="myForm" target="_self">
-              <input type="hidden" name="method_name" value="get_filtered_from_db_all">
-
-              <label>limit</label>
-              <input type="text" name="limit" value="20" />
-              <label>report_id</label>
-              <input type="text" name="report_id" value="5a61d6a2ec412d00025c98c4" />
-              <label>unique</label>
-              <input type="text" name="unique" value="ddomain" />
-              <label>order_by</label>
-              <input type="text" name="order_by" value="successRate" />
-              <label>date_from</label>
-              <input type="text" name="date_from" value="<? echo strtotime('-1 month') ?>" />
-              <label>date_to</label>
-              <input type="text" name="date_to" value="<? echo strtotime('+1 day') ?>" />
-
-              <input name="submit" type="submit" class="button " value="Done"/>
-            </form>
-          </div>
-
-
-        </div>
-      </div>
     </li>
   </ul>
 
